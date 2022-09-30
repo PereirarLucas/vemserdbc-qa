@@ -8,7 +8,7 @@ public class Exercicio5 {
         System.out.println("Digite a altura");
         double altura = leitor.nextDouble();
 
-        double area = (base*altura) /2;
+        double area = (base*altura);
         System.out.println(area);
 
     }
