@@ -1,23 +1,13 @@
-public class ContaCorrente {
-    Cliente cliente = new Cliente();
-    String numeroConta;
-    int agencia;
-    double saldo;
+public class ContaCorrente extends Conta implements Impressao {
+    private double saldo;
     double chequeEspecial;
 
-    public ContaCorrente() {
+    public ContaCorrente(double saldo, double chequeEspecial) {
+        this.saldo = saldo;
+        this.chequeEspecial = chequeEspecial;
     }
 
-    public void imprimirContaCorrente() {
-        System.out.println("Conta corrente: ");
-        System.out.println("Nome do titular: " + this.cliente.nome);
-        System.out.println("Numero da conta: " + this.numeroConta);
-        System.out.println("Agencia: " + this.agencia);
-        System.out.println("Saldo: " + this.saldo);
-        System.out.println("Cheque Especial: " + this.chequeEspecial);
-    }
     public double retornarSaldoComChequeEspecial() {
-        double sCCE = this.saldo + this.chequeEspecial;
         System.out.println("O valor disponivel em sua conta e de : ");
         return this.saldo + this.chequeEspecial;
     }
@@ -36,26 +26,27 @@ public class ContaCorrente {
         }
     }
 
-    public boolean depositar(double deposito) {
+    public void depositar(double deposito) {
         if (deposito > 0.0) {
             this.saldo += deposito;
             System.out.println("Deposito realizado com sucesso.");
-            System.out.println("Seu novo saldo é de R$: " + this.saldo);
-            return true;
+            System.out.println("Seu novo saldo e de R$: " + this.saldo);
         } else {
             System.out.println("Nao foi possivel realizar seu deposito.");
-            return false;
         }
     }
 
-    public boolean transferir(ContaCorrente conta, double valor) {
+    public void transferir(ContaCorrente conta, double valor) {
         if (this.sacar(valor)) {
             conta.depositar(valor);
-            return true;
         } else {
             System.out.println("Nao foi possivel realizar sua transferencia neste momento, tente novamente.");
-            return false;
         }
+    }
+
+    @Override
+    public void imprimir() {
+
     }
 }
 
