@@ -54,25 +54,29 @@ abstract class Conta implements Movimentacao {
             return true;
         } else {
             System.out.println("Nao foi possivel realizar o saque");
-            return true;
+            return false;
         }
     }
 
-    public void depositar(double deposito) {
+    public boolean depositar(double deposito) {
         if (deposito > 0.0) {
             this.saldo += deposito;
             System.out.println("Deposito realizado com sucesso.");
             System.out.println("Seu novo saldo e de R$: " + this.saldo);
+            return true;
         } else {
             System.out.println("Nao foi possivel realizar seu deposito.");
+            return false;
         }
     }
 
-    public void transferir(ContaCorrente conta, double valor) {
+    public boolean transferir(ContaCorrente conta, double valor) {
         if (this.sacar(valor)) {
             conta.depositar(valor);
+            return true;
         } else {
-            System.out.println("Nao foi possivel realizar sua transferencia neste momento, tente novamente.");
+            System.out.println("Nao foi possivel realizar sua transferencia neste momento.");
+            return false;
         }
     }
 

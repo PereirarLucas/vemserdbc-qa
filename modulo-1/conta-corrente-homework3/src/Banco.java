@@ -34,7 +34,7 @@ public class Banco {
         cliente2.imprimirCliente();
 
         contaCorrente1.transferir(contaCorrente2, 50.0);
-        contaCorrente2.transferir(contaCorrente2, 100.0);
+        contaCorrente2.transferir(contaCorrente1, 100.0);
 
         contaCorrente1.imprimir();
         contaCorrente2.imprimir();
