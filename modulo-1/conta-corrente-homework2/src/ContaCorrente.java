@@ -28,7 +28,7 @@ public class ContaCorrente extends Conta implements Impressao {
             return true;
         } else {
             System.out.println("Nao foi possivel realizar o saque, saldo negativo.");
-            return true;
+            return false;
         }
     }
 
